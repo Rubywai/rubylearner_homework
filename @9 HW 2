@@ -1,0 +1,30 @@
+void main(){
+  draw(Circle());
+  draw(Triangle());
+  draw(Square());
+}
+void draw(Shape shape){
+  shape.draw();
+}
+
+abstract class Shape{
+  void draw();
+}
+class Circle extends Shape{
+  @override
+  void draw() {
+    print('Drawing Circle');
+  }
+}
+class Triangle extends Shape{
+  @override
+  void draw() {
+    print('Drawing Triangle');
+  }
+}
+class Square extends Shape{
+  @override
+  void draw() {
+    print('Drawing Square');
+  }
+}
