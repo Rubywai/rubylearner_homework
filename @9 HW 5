@@ -1,0 +1,11 @@
+void main(){
+   1.typeInfo();
+   true.typeInfo();
+   [].typeInfo();
+}
+
+extension ObjectExt on Object{
+  void typeInfo() {
+    print('This is $runtimeType type');
+  }
+}
