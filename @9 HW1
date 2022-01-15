@@ -1,0 +1,20 @@
+void main(){
+  Map<int,Student> student= {
+    1: Student('Mg Mg',24,'Male'),
+    2: Student('Ma Ma',26,'FeMale'),
+    3: Student('Ko Ko',27,'FeMale'),
+
+  };
+  student.forEach((rollNo, student) {
+    print('Name is ${student.name} Age is ${student.age} Gender is ${student.gender}');
+  });
+
+}
+
+class Student{
+  final String name;
+  final int age;
+  final String gender;
+
+  Student(this.name, this.age, this.gender);
+}
