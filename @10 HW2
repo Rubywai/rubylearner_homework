@@ -1,0 +1,47 @@
+void main(){
+   try{
+     validateCharacter('one1');
+   }
+   on NullOrEmptyException catch(e){
+     print(e.errorMessage);
+   }
+   on NumberContainException catch(e){
+     print(e.errorMessage);
+   }
+}
+
+
+void validateCharacter(String? str){
+  if(str == null || str.isEmpty){
+    throw NullOrEmptyException('String is Null or Empty');
+  }
+  else {
+    bool isNumberContain = false;
+    for(int i=0;i<str.length;i++){
+      try {
+        num.parse(str[i]);
+        isNumberContain = true;
+      }
+      catch(e){
+
+      }
+      finally{
+        if(isNumberContain){
+          throw NumberContainException('The String contain Number');
+        }
+      }
+
+    }
+  }
+}
+class NullOrEmptyException implements Exception{
+  final String errorMessage;
+
+  NullOrEmptyException(this.errorMessage);
+
+}
+class NumberContainException implements Exception{
+  final String errorMessage;
+
+  NumberContainException(this.errorMessage);
+}
