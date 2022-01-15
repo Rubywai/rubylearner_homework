@@ -1,0 +1,16 @@
+void main(){
+  Staff staff = Engineer();
+  Staff staff1 = Accountant();
+  Staff staff2 = Designer();
+  staff.infoStaff(staff);
+  staff.infoStaff(staff1);
+  staff.infoStaff(staff2);
+}
+abstract class Staff{
+  void infoStaff(Staff staff){
+    print(staff.runtimeType);
+  }
+}
+class Engineer extends Staff{}
+class Accountant extends Staff{}
+class Designer extends Staff{}
