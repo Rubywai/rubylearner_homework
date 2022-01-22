@@ -12,13 +12,7 @@ StreamTransformer streamTransformer = StreamTransformer.fromHandlers(
     }
 );
 void main()   {
-  StreamTransformer streamTransformer = StreamTransformer.fromHandlers(
-      handleData: (data,sink){
-        if(data is int) {
-          sink.add(data);
-        }
-      }
-  );
+ 
  
   emit()
        .filterInt()
@@ -30,14 +24,7 @@ extension on Stream{
      return transform(streamTransformer);
    }
 }
-StreamTransformer filterInt(){
-  return StreamTransformer.fromHandlers(
-    handleData: (data,EventSink eventSink){
-      if(data is int)
-      eventSink.add(data);
-    }
-  );
-}
+
 Stream<dynamic> emit() async*{
   yield(4);
   yield(5);
