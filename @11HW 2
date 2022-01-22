@@ -1,0 +1,55 @@
+//emit လို့ အမည်ရတဲ့ Stream async generator ၁ ခုကနေ Stream<dynamic> တွေကို  ထုတ်ပေးပါမယ်။
+// Stream Transformer class ကို အသုံးပြုပြီး ကိုယ်တိုင် operator ၁ ခု ဖန်တီးပေးပါ။
+// operator ရဲ့အမည်ကတော့ filterInt ဖြစ်ပြီး emit function ကထုတ်ပေးတဲ့ dynamic value တွေကနေ
+// int ကို ပဲရွေးထုတ်ပေးရပါမယ်။
+
+import 'dart:async';
+StreamTransformer streamTransformer = StreamTransformer.fromHandlers(
+    handleData: (data,sink){
+      if(data is int) {
+        sink.add(data);
+      }
+    }
+);
+void main()   {
+  StreamTransformer streamTransformer = StreamTransformer.fromHandlers(
+      handleData: (data,sink){
+        if(data is int) {
+          sink.add(data);
+        }
+      }
+  );
+ 
+  emit()
+       .filterInt()
+      .listen((val) { print(val) ;} );
+}
+extension on Stream{
+
+   Stream filterInt() {
+     return transform(streamTransformer);
+   }
+}
+StreamTransformer filterInt(){
+  return StreamTransformer.fromHandlers(
+    handleData: (data,EventSink eventSink){
+      if(data is int)
+      eventSink.add(data);
+    }
+  );
+}
+Stream<dynamic> emit() async*{
+  yield(4);
+  yield(5);
+  yield("hello");
+  yield(true);
+}
+
+
+
+
+
+
+
+
+
